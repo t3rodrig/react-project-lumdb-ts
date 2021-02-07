@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const POSTER_PATH = `${process.env.REACT_APP_IMG_URL}/w154`;
 
@@ -12,7 +13,9 @@ type Props = {
 
 const Movie = ({ movie }: Props) => (
   <div>
-    <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+    <Link to={`/${movie.id}`}>
+      <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+    </Link>
   </div>
 );
 
