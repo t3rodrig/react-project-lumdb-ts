@@ -8,7 +8,8 @@ import {
 import logo from './logo.svg';
 import './App.css';
 
-import MovieList from './MoviesList';
+import MoviesList from './MoviesList';
+import MovieDetail from './MovieDetail';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
           </Link>
         </header>
         <Switch>
-          <Route exact path="/" component={MovieList} />
+          <Route exact path="/" component={MoviesList} />
+          <Route path="/:id" component={MovieDetail} />
         </Switch>
       </div>
     </Router>
