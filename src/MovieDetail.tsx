@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { Poster } from './Movie';
 
 const POSTER_PATH = `${process.env.REACT_APP_IMG_URL}/w154`;
 const BACKDROP_PATH = `${process.env.REACT_APP_IMG_URL}/w1280`;
@@ -24,14 +26,38 @@ const MovieDetail = ({ match }: {match: any}) => {
   }, [match]);
 
   return (
-    <div>
-      <img src={`${BACKDROP_PATH}${movie.backdrop_path}`} alt={movie.title} />
-      <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
-      <h1>{movie.title}</h1>
-      <h3>{movie.release_date}</h3>
-      <p>{movie.overview}</p>
-    </div>
+    <MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
+      <MovieInfo>
+        <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+        <div>
+          <h1>{movie.title}</h1>
+          <h3>{movie.release_date}</h3>
+          <p>{movie.overview}</p>
+        </div>
+      </MovieInfo>
+    </MovieWrapper>
   )
 }
 
 export default MovieDetail
+
+const MovieWrapper = styled.div`
+  position: relative;
+  padding-top: 50vh;
+  background: url(${(props: {backdrop: string}) => props.backdrop}) no-repeat;
+  background-size: cover 
+`;
+
+const MovieInfo = styled.div`
+  background: white;
+  text-align: left;
+  padding: 2rem 10%;
+  display: flex;
+  > div {
+    margin-left: 20px;
+  }
+  img {
+    position: relative;
+    top: -5rem;
+  }
+`;

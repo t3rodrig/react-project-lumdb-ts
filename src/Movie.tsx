@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const POSTER_PATH = `${process.env.REACT_APP_IMG_URL}/w154`;
 
@@ -12,11 +13,13 @@ type Props = {
 }
 
 const Movie = ({ movie }: Props) => (
-  <div>
-    <Link to={`/${movie.id}`}>
-      <img src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
-    </Link>
-  </div>
+  <Link to={`/${movie.id}`}>
+    <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+  </Link>
 );
 
 export default Movie;
+
+export const Poster = styled.img`
+box-shadow: 0 0 35px black;
+`
