@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+// @ts-ignore
+import Overdrive from 'react-overdrive';
 import { Poster } from './Movie';
 
 const POSTER_PATH = `${process.env.REACT_APP_IMG_URL}/w154`;
@@ -28,7 +30,9 @@ const MovieDetail = ({ match }: {match: any}) => {
   return (
     <MovieWrapper backdrop={`${BACKDROP_PATH}${movie.backdrop_path}`}>
       <MovieInfo>
-        <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+        <Overdrive id={`${movie.id}`}>
+          <Poster src={`${POSTER_PATH}${movie.poster_path}`} alt={movie.title} />
+        </Overdrive>
         <div>
           <h1>{movie.title}</h1>
           <h3>{movie.release_date}</h3>
